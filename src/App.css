@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: space-around;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align: center;
+}
+
+button {
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 5px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.player-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+  text-align:center;
+}
+
+.player svg {
+  margin: 0 auto;
+}
+
+.lives-container {
+  display: flex;
+  justify-content: center;
+}
+
+.controls {
+  text-align: center;
+}
+
+.choices-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.choices-wrap button {
+  margin: 10px;
+}
+
+.submit-button {
+  background-color: #61dafb;
+  display: block;
+  margin: 0 auto;
+  font-size: 40px;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-over svg {
+  margin-bottom: 25px;
 }
