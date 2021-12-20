@@ -16,6 +16,12 @@ body {
   align-items: center;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: app-logo-spin infinite 20s linear;
+  }
+}
+
 button {
   border-radius: 8px;
   cursor: pointer;
@@ -78,4 +84,13 @@ button {
 
 .game-over svg {
   margin-bottom: 25px;
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
