@@ -10,6 +10,12 @@ body {
   text-align: center;
 }
 
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
   border-radius: 8px;
   cursor: pointer;
