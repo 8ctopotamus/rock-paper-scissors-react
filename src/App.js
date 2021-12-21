@@ -55,7 +55,18 @@ function App() {
   }
 
   const handleNextRound = () => {
-    console.log('Next round...')
+    const { human, computer } = players
+    setMessage(defaultMessage)
+    setPlayers({
+      human: {
+        ...human,
+        choice: null,
+      },
+      computer: {
+        ...computer,
+        choice: null,
+      }
+    })
   }
 
   return (
