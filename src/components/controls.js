@@ -1,9 +1,12 @@
+import { useGameContext } from '../context/gameContext'
 import { choices } from '../utils/constants'
 import { renderChoiceIcon } from '../utils/helpers'
 
-const Controls = ({ message, handleChoiceChange, handleNextRound }) => {
-  return (
+const Controls = ({ handleChoiceChange, handleNextRound }) => {
+  const value = useGameContext()
+  console.log(value)
 
+  return (
     <div className='controls'>
       <h3>{message}</h3>
 

@@ -3,6 +3,7 @@ import Header from './components/header';
 import Controls from './components/controls'
 import Player from './components/player'
 import GameOver from './components/gameOver'
+import { GameProvider } from './context/gameContext'
 import { getComputerChoice } from './utils/helpers';
 import './App.css';
 
@@ -24,60 +25,60 @@ function App() {
   const [players, setPlayers] = useState(defaultPlayers)
 
   const handleChoiceChange = humanChoice => {
-    const human = { ...players.human }
-    const computer = { ...players.computer }
-    const computerChoice = getComputerChoice()
-    let msg
-    if (
-      humanChoice === 'r' && computerChoice === 's' ||
-      humanChoice === 'p' && computerChoice === 'r' ||
-      humanChoice === 's' && computerChoice === 'p'
-    ) {
-      msg = 'ROUND WON'
-      computer.lives--
-    } else if (humanChoice === computerChoice) {
-      msg = 'TIE'
-    } else {
-      msg = 'ROUND LOST'
-      human.lives--
-    }
+    // const human = { ...players.human }
+    // const computer = { ...players.computer }
+    // const computerChoice = getComputerChoice()
+    // let msg
+    // if (
+    //   humanChoice === 'r' && computerChoice === 's' ||
+    //   humanChoice === 'p' && computerChoice === 'r' ||
+    //   humanChoice === 's' && computerChoice === 'p'
+    // ) {
+    //   msg = 'ROUND WON'
+    //   computer.lives--
+    // } else if (humanChoice === computerChoice) {
+    //   msg = 'TIE'
+    // } else {
+    //   msg = 'ROUND LOST'
+    //   human.lives--
+    // }
 
-    setMessage(msg)
+    // setMessage(msg)
 
-    setPlayers({
-      human: {
-        ...human,
-        choice: humanChoice,
-      },
-      computer: {
-        ...computer,
-        choice: computerChoice,
-      }
-    })
+    // setPlayers({
+    //   human: {
+    //     ...human,
+    //     choice: humanChoice,
+    //   },
+    //   computer: {
+    //     ...computer,
+    //     choice: computerChoice,
+    //   }
+    // })
   }
 
   const handleNextRound = () => {
-    const { human, computer } = players
-    setMessage(defaultMessage)
-    setPlayers({
-      human: {
-        ...human,
-        choice: null,
-      },
-      computer: {
-        ...computer,
-        choice: null,
-      }
-    })
+    // const { human, computer } = players
+    // setMessage(defaultMessage)
+    // setPlayers({
+    //   human: {
+    //     ...human,
+    //     choice: null,
+    //   },
+    //   computer: {
+    //     ...computer,
+    //     choice: null,
+    //   }
+    // })
   }
 
   const reset = () => {
-    setMessage(defaultMessage)
-    setPlayers(defaultPlayers)
+    // setMessage(defaultMessage)
+    // setPlayers(defaultPlayers)
   }
 
   return (
-    <>
+    <GameProvider>
       <Header />
 
       {players.human.lives === 0 || players.computer.lives === 0 ? (
@@ -101,13 +102,12 @@ function App() {
           </div>
           
           <Controls
-            message={message} 
             handleChoiceChange={handleChoiceChange}
             handleNextRound={handleNextRound}
           />
         </>
       )}
-    </>
+    </GameProvider>
   )
 }
 
