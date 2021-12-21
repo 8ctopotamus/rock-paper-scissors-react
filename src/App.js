@@ -24,7 +24,8 @@ function App() {
   const [players, setPlayers] = useState(defaultPlayers)
 
   const handleChoiceChange = humanChoice => {
-    const { human, computer } = players
+    const human = { ...players.human }
+    const computer = { ...players.computer }
     const computerChoice = getComputerChoice()
     let msg
     if (
