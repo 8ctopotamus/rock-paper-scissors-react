@@ -1,7 +1,16 @@
 import { FaHeart, FaHeartBroken } from 'react-icons/fa'
 import { renderChoiceIcon } from '../utils/helpers'
+import { useGameContext } from '../context/gameContext'
 
-const Player = ({ name, choice, lives }) => {
+const Player = ({ name }) => {
+  const { state: { players } } = useGameContext()
+
+  const [_, playerObj] = Object.entries(players).find(entry => {
+    const [key] = entry
+    return key === name
+  })
+  const { lives, choice } = playerObj
+
   return (
     <div className='player'>
       { renderChoiceIcon(choice, { size: 80 }) }

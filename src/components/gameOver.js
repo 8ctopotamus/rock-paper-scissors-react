@@ -1,6 +1,9 @@
 import { FaTrophy, FaSkullCrossbones } from "react-icons/fa"
+import { actions, useGameContext } from "../context/gameContext"
 
 const GameOver = ({ humanLives, reset }) => {
+  const { dispatch } = useGameContext()
+
   return (
     <div className="game-over">
       {humanLives === 0 ? (
@@ -14,7 +17,9 @@ const GameOver = ({ humanLives, reset }) => {
           <h2>YOU WON</h2>
         </>
       )}
-      <button onClick={reset}>PLAY AGAIN</button>
+      <button onClick={() => {
+        dispatch({ type: actions.RESET })
+      }}>PLAY AGAIN</button>
     </div>
   )
 }
