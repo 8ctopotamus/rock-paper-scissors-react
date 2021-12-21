@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/header';
 import Controls from './components/controls'
 import Player from './components/player'
+import { getComputerChoice } from './utils/helpers';
 import './App.css';
 
 const defaultMessage = 'CHOOSE'
@@ -22,7 +23,35 @@ function App() {
   const [players, setPlayers] = useState(defaultPlayers)
 
   const handleChoiceChange = humanChoice => {
-    console.log(humanChoice)
+    const { human, computer } = players
+    const computerChoice = getComputerChoice()
+    let msg
+    if (
+      humanChoice === 'r' && computerChoice === 's' ||
+      humanChoice === 'p' && computerChoice === 'r' ||
+      humanChoice === 's' && computerChoice === 'p'
+    ) {
+      msg = 'ROUND WON'
+      computer.lives--
+    } else if (humanChoice === computerChoice) {
+      msg = 'TIE'
+    } else {
+      msg = 'ROUND LOST'
+      human.lives--
+    }
+
+    setMessage(msg)
+
+    setPlayers({
+      human: {
+        ...human,
+        choice: humanChoice,
+      },
+      computer: {
+        ...computer,
+        choice: computerChoice,
+      }
+    })
   }
 
   const handleNextRound = () => {
