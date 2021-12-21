@@ -1,7 +1,33 @@
+import { useState } from 'react';
 import Header from './components/header';
+import Controls from './components/controls'
 import './App.css';
 
+const defaultMessage = 'CHOOSE'
+
+const defaultPlayers = {
+  human: {
+    choice: null,
+    lives: 3,
+  }, 
+  computer: {
+    choice: null,
+    lives: 3,
+  }
+}
+
 function App() {
+  const [message, setMessage] = useState(defaultMessage)
+  const [players, setPlayers] = useState(defaultPlayers)
+
+  const handleChoiceChange = humanChoice => {
+    console.log(humanChoice)
+  }
+
+  const handleNextRound = () => {
+    console.log('Next round...')
+  }
+
   return (
     <>
       <Header />
@@ -10,7 +36,11 @@ function App() {
         {/* TODO: Player components */}
       </div>
       
-      {/* TODO: Controls component */}
+      <Controls
+        message={message} 
+        handleChoiceChange={handleChoiceChange}
+        handleNextRound={handleNextRound}
+      />
     </>
   )
 }
