@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/header';
 import Controls from './components/controls'
 import Player from './components/player'
+import GameOver from './components/gameOver'
 import { getComputerChoice } from './utils/helpers';
 import './App.css';
 
@@ -69,28 +70,42 @@ function App() {
     })
   }
 
+  const reset = () => {
+    setMessage(defaultMessage)
+    setPlayers(defaultPlayers)
+  }
+
   return (
     <>
       <Header />
 
-      <div className="player-container">
-        <Player 
-          name="human" 
-          choice={players.human.choice}
-          lives={players.human.lives}
+      {players.human.lives === 0 || players.computer.lives === 0 ? (
+        <GameOver 
+          humanLives={players.human.lives}
+          reset={reset} 
         />
-        <Player 
-          name="computer" 
-          choice={players.computer.choice}
-          lives={players.computer.lives}
-        />
-      </div>
-      
-      <Controls
-        message={message} 
-        handleChoiceChange={handleChoiceChange}
-        handleNextRound={handleNextRound}
-      />
+      ) : (
+        <>
+          <div className="player-container">
+            <Player 
+              name="human" 
+              choice={players.human.choice}
+              lives={players.human.lives}
+            />
+            <Player 
+              name="computer" 
+              choice={players.computer.choice}
+              lives={players.computer.lives}
+            />
+          </div>
+          
+          <Controls
+            message={message} 
+            handleChoiceChange={handleChoiceChange}
+            handleNextRound={handleNextRound}
+          />
+        </>
+      )}
     </>
   )
 }
