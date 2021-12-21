@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/header';
 import Controls from './components/controls'
+import Player from './components/player'
 import './App.css';
 
 const defaultMessage = 'CHOOSE'
@@ -33,7 +34,16 @@ function App() {
       <Header />
 
       <div className="player-container">
-        {/* TODO: Player components */}
+        <Player 
+          name="human" 
+          choice={players.human.choice}
+          lives={players.human.lives}
+        />
+        <Player 
+          name="computer" 
+          choice={players.computer.choice}
+          lives={players.computer.lives}
+        />
       </div>
       
       <Controls

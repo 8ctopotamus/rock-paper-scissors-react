@@ -3,6 +3,7 @@ import { renderChoiceIcon } from '../utils/helpers'
 
 const Controls = ({ message, handleChoiceChange, handleNextRound }) => {
   return (
+
     <div className='controls'>
       <h3>{message}</h3>
 
